@@ -1,0 +1,10 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Quote Stock Price
+{% endblock %}
+
+{% block main %}
+    <h1>{{ stonk.symbol }}: {{ stonk.price | usd }}</h1>
+    <a href="/"><button class="btn btn-primary">Back</button></a>
+{% endblock %}

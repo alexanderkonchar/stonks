@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Error
+{% endblock %}
+
+{% block main %}
+    <div class="mb-3">
+        <h1>Error</h1>
+    </div>
+
+    <div class="mb-3">
+        <!-- https://memegen.link/ -->
+        <img alt="{{ top }}" class="border img-fluid" src="http://memegen.link/custom/{{ top | urlencode }}/{{ bottom | urlencode }}.jpg?alt=https://i.imgur.com/CsCgN7Ll.png&width=400" title="{{ top }}">
+    </div>
+
+    <div class="mb-3">
+        <a href="/"><button class="btn btn-primary">Back</button></a>
+    </div>
+{% endblock %}

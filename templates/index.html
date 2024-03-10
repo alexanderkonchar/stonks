@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Portfolio
+{% endblock %}
+
+{% block main %}
+    <div class="mb-3">
+        <h1>Portfolio</h1>
+    </div>
+
+   <div class="mb-3">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Symbol</th>
+                <th>Shares</th>
+                <th>Price</th>
+                <th>TOTAL</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            {% for stonk in stonks %}
+                <tr>
+                    <td>{{ stonk.symbol }}</td>
+                    <td>{{ stonk.shares }}</td>
+                    <td>{{ stonk.price | usd }}</td>
+                    <td>{{ stonk.total | usd }}</td>
+                </tr>
+            {% endfor %}
+
+        </tbody>
+        <tfoot>
+            <tr>
+              <td></td>
+              <td></td>
+              <td>Cash</td>
+              <td>{{ cash | usd }}</td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td><strong>TOTAL<strong></td>
+              <td><strong>{{ grand_total | usd}}</strong></td>
+            </tr>
+          </tfoot>
+    </table>
+   </div>
+{% endblock %}

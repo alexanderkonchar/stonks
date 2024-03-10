@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Register
+{% endblock %}
+
+{% block main %}
+
+<!-- Check if passwords match client side for better ux -->
+<!-- Adapted from https://stackoverflow.com/questions/9142527/can-you-require-two-form-fields-to-match-with-html -->
+    <script>
+        function checkIfPasswordsMatch() {
+            var input = document.getElementById('confirmation');
+            if (document.getElementById('confirmation').value != document.getElementById('password').value) {
+                input.setCustomValidity('Password don\'t match!');
+            } else {
+                // input is valid -- reset the error message
+                input.setCustomValidity('');
+            }
+        }
+    </script>
+
+    <div class="mb-3">
+        <h1>Register</h1>
+    </div>
+
+    <form action="/register" method="post">
+        <div class="mb-3">
+            <input autocomplete="off" autofocus required class="form-control mx-auto w-auto" name="username" placeholder="Username" type="text">
+        </div>
+        <div class="mb-3">
+            <input class="form-control mx-auto w-auto" required name="password" id="password" placeholder="Password" type="password" oninput="checkIfPasswordsMatch(this)">
+        </div>
+        <div class="mb-3">
+            <input class="form-control mx-auto w-auto" required name="confirmation" id="confirmation" placeholder="Confirm Password" type="password" oninput="checkIfPasswordsMatch(this)">
+        </div>
+        <button class="btn btn-primary" type="submit">Register</button>
+    </form>
+
+{% endblock %}
